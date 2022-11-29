@@ -63,8 +63,8 @@ def login():
 @jwt_required()
 def logout():
     #username=request.json.get("username",None)
-    userid=get_jwt_identity()
-    print(userid)
+    #userid=get_jwt_identity()
+    #print(userid)
 
 
 
