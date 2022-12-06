@@ -33,20 +33,21 @@ def add_user(user_and_password):
 
 
 def get_user(username):
-    return client["my_db"]["user"].find({"username":username})
+    return client["my_db"]["user"].find_one({"username":username})
 
 
 def check_user(username):
-    if client["my_db"]["user"].find({"username":username}):
+    if client["my_db"]["user"].find_one({"username":username}):
         return True
     return False
 
 def get_allusers():
-    return client["my_db"]["user"].find()
+    return client["my_db"]["user"].find({},{"password":0,"_id":0})
 
 
 def pagination(entry,page):
     cursor_start = (page-1)*entry
     cursor_end = cursor_start + entry
-    cursor = client["db"]["alert"].find().sort("Date_and_Time",-1)
+    cursor = client["my_db"]["alert"].find().sort("Date_and_Time",-1)
     result = cursor[cursor_start:cursor_end]
+    return result
