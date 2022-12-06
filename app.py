@@ -9,10 +9,12 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required, get_jwt
 from flask_jwt_extended import JWTManager
 from blocklist import BLOCKLIST
+from flask_cors import CORS
 import mongo
 import bcrypt
 
 app = Flask(__name__)
+CORS(app)
 
 # Setup the Flask-JWT-Extended extension
 app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
