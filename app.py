@@ -159,7 +159,7 @@ def get_page():
     entry=request.json.get("entry_no",None)
     pegina=mongo.pagination(entry,page)
     data=[]
-    dict = {"page_no":page,"entry_no":entry}
+    dict = {"entry_no":entry, "page_no":page}
     data.append(dict)
     for x in pegina:
         x["_id"]=str(x["_id"])
